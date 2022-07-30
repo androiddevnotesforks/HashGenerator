@@ -31,7 +31,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -75,6 +75,6 @@ dependencies {
     implementation "androidx.compose.material:material-icons-extended:1.1.1"
 
     // Compose Destinations
-    implementation 'io.github.raamcosta.compose-destinations:core:1.6.13-beta'
+    implementation 'io.github.raamcosta.compose-destinations:animations-core:1.6.13-beta'
     ksp 'io.github.raamcosta.compose-destinations:ksp:1.6.13-beta'
 }
