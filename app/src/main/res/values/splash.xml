@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.HashGenerator.SplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#01062a</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/hash_icon</item>
+        <item name="postSplashScreenTheme">@style/Theme.HashGenerator</item>
+    </style>
+</resources>

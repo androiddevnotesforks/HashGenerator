@@ -3,6 +3,7 @@ package com.jefisu.hashgenerator
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.animation.*
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
@@ -24,6 +25,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
 import com.jefisu.hashgenerator.destinations.HashGeneratedScreenDestination
@@ -45,8 +47,16 @@ import kotlinx.coroutines.launch
 @ExperimentalMaterial3Api
 @ExperimentalAnimationApi
 class MainActivity : ComponentActivity() {
+
+    private val viewModel by viewModels<SplashViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        installSplashScreen().apply {
+            setKeepOnScreenCondition {
+                viewModel.isLoading.value
+            }
+        }
         setContent {
             val snackBarHostState = remember { SnackbarHostState() }
             val navHostEngine = rememberAnimatedNavHostEngine(
